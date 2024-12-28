@@ -10,6 +10,13 @@ compatibility_flags = ["nodejs_compat"]
 [observability]
 enabled = true
 
+[[d1_databases]]
+binding = "DB"
+database_name = "hono-htmx-d1"
+database_id = "fff13616-f333-45a1-88a4-f8051a65fd4e"
+migrations_dir = "drizzle/migrations"
+
+
 # Automatically place your workloads in an optimal location to minimize latency.
 # If you are running back-end logic in a Worker, running it closer to your back-end infrastructure
 # rather than the end user may result in better performance.

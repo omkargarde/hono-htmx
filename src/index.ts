@@ -11,8 +11,18 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
-export default {
-	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
-	},
-} satisfies ExportedHandler<Env>;
+import { drizzle } from 'drizzle-orm/d1';
+import { Hono } from 'hono';
+
+interface Env {
+	DB: D1Database;
+}
+
+const app = new Hono<{ Bindings: Env }>();
+
+app.get('/', async (c) => {
+	const db = drizzle(c.env.DB);
+});
+
+export default app;
+
